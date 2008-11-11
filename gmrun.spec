@@ -32,14 +32,16 @@ CTRL-Enter. Odnośniki URL.
 %prep
 %setup -q
 %patch0 -p1
+# Disable check for STLport due to bug: http://bugs.gentoo.org/164339
+%{__sed} -i -e 's,^AC_PATH_STLPORT,dnl REMOVED ,g' configure.in
+%{__sed} -i -e 's,@STLPORT_[A-Z]\+@,,g' src/Makefile.am
 
 %build
 %{__aclocal}
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure \
-	--disable-stlport
+%configure
 
 %{__make}
 
