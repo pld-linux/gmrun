@@ -1,21 +1,19 @@
-#
-# TODO
-# it links with:
-# -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lgio-2.0 -lXext -lXrender -lXinerama -lXi -lXrandr -lXcursor -lXcomposite -lXdamage -lcairo -lpangoft2-1.0 -lX11 -lXfixes -lpango-1.0 -lm -lfreetype -lz -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lglib-2.0    -lpopt
-# so find all BRs ;)
-
 Summary:	A simple program which provides a "run program" window
 Summary(pl.UTF-8):	Prosty program prezentujący okienko "uruchom"
 Name:		gmrun
 Version:	0.9.2
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/gmrun/%{name}-%{version}.tar.gz
 # Source0-md5:	6cef37a968006d9496fc56a7099c603c
 Patch0:		%{name}-gcc4.3.patch
 URL:		http://sourceforge.net/projects/gmrun/
-BuildRequires:	gtk+2-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	gtk+2-devel >= 2:2.4.0
+BuildRequires:	libstdc++-devel
+BuildRequires:	popt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -36,7 +34,11 @@ CTRL-Enter. Odnośniki URL.
 %patch0 -p1
 
 %build
-%configure2_13 \
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
+%configure \
 	--disable-stlport
 
 %{__make}
