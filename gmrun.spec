@@ -37,7 +37,6 @@ CTRL-Enter. Odnośniki URL.
 
 %build
 %configure2_13 \
-	--prefix=%{_prefix} \
 	--disable-stlport
 
 %{__make}
