@@ -1,3 +1,9 @@
+#
+# TODO
+# it links with:
+# -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lgio-2.0 -lXext -lXrender -lXinerama -lXi -lXrandr -lXcursor -lXcomposite -lXdamage -lcairo -lpangoft2-1.0 -lX11 -lXfixes -lpango-1.0 -lm -lfreetype -lz -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lglib-2.0    -lpopt
+# so find all BRs ;)
+
 Summary:	A simple program which provides a "run program" window
 Summary(pl.UTF-8):	Prosty program prezentujący okienko "uruchom"
 Name:		gmrun
@@ -30,8 +36,8 @@ CTRL-Enter. Odnośniki URL.
 %patch0 -p1
 
 %build
-./configure \
---prefix=%{_prefix} \
+%configure2_13 \
+	--prefix=%{_prefix} \
 	--disable-stlport
 
 %{__make}
