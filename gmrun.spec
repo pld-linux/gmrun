@@ -2,12 +2,13 @@ Summary:	A simple program which provides a "run program" window
 Summary(pl.UTF-8):	Prosty program prezentujący okienko "uruchom"
 Name:		gmrun
 Version:	0.9.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/gmrun/%{name}-%{version}.tar.gz
 # Source0-md5:	6cef37a968006d9496fc56a7099c603c
 Patch0:		%{name}-gcc4.3.patch
+Patch1:		%{name}-gtkcompeltionline.patch
 URL:		http://sourceforge.net/projects/gmrun/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -32,6 +33,7 @@ CTRL-Enter. Odnośniki URL.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 # Disable check for STLport due to bug: http://bugs.gentoo.org/164339
 %{__sed} -i -e 's,^AC_PATH_STLPORT,dnl REMOVED ,g' configure.in
 %{__sed} -i -e 's,@STLPORT_[A-Z]\+@,,g' src/Makefile.am
