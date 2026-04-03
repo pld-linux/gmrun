@@ -2,7 +2,7 @@ Summary:	A simple program which provides a "run program" window
 Summary(pl.UTF-8):	Prosty program prezentujący okienko "uruchom"
 Name:		gmrun
 Version:	0.9.2
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/gmrun/%{name}-%{version}.tar.gz
